@@ -17,3 +17,10 @@ const sampleList = {
     "Fantasy novel",
   ],
 };
+
+const sampleData = {
+  sampleMyLists: sampleMyLists,
+  sampleList: sampleList,
+};
+
+export default sampleData;
