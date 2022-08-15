@@ -10,3 +10,5 @@ const AddItem = () => {
     </div>
   );
 };
+
+export default AddItem;
