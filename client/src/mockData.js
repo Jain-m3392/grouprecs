@@ -3,7 +3,7 @@ const sampleMyLists = {
 };
 
 const sampleList = {
-  id: "Ajv8eIl9",
+  id: "Ajv7eIl9",
   name: "My list #1",
   items: [
     "Science fiction book",
