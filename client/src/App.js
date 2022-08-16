@@ -1,10 +1,14 @@
 import React from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import List from "./components/List";
+import ListMenu from "./components/ListMenu";
 
 function App() {
-  return <div className="App"></div>;
+  return (
+    <div className="App">
+      <ListMenu />
+    </div>
+  );
 }
 
 export default App;
