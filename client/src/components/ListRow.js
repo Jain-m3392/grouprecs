@@ -3,7 +3,7 @@ import React from "react";
 const ListRow = (props) => {
   return (
     <tr>
-      <td>{props.item}</td>
+      <td>{props.listName}</td>
       <td>
         <button className="btn btn-outline-danger">Delete</button>
       </td>
