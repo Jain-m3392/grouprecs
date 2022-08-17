@@ -11,25 +11,22 @@ const dbo = require("../db/conn");
 // This help convert the id from string to ObjectId for the _id.
 const ObjectId = require("mongodb").ObjectId;
 
-/*
-We don't need this
 // This section will help you get all of the lists
-listRoutes.route("/list").get(function (req, res) {
-  let db_connect = dbo.getDb("everyList");
+listRoutes.route("/lists").get(function (req, res) {
+  let db_connect = dbo.getDb("Grouprecs");
   db_connect
-    .collection("lists")
+    .collection("Lists")
     .find({})
     .toArray(function (err, result) {
       if (err) throw err;
       res.json(result);
     });
 });
-*/
 
 // This section will help you get a single list by id
 listRoutes.route("/:id").get(function (req, res) {
   let db_connect = dbo.getDb();
-  let myquery = { _id: ObjectId(req.params.id) };
+  let myquery = { url: ObjectId(req.params.id) };
   db_connect.collection("lists").findOne(myquery, function (err, result) {
     if (err) throw err;
     res.json(result);
