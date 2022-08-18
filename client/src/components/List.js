@@ -2,17 +2,28 @@ import React from "react";
 import sampleData from "../mockData";
 import AddItem from "./AddItem";
 import ListRow from "./ListRow";
+import { useParams } from "react-router-dom";
+
+const findList = (url) => {
+  return sampleData.sampleApiData1.url == url
+    ? sampleData.sampleApiData1
+    : sampleData.sampleApiData2;
+};
 
 const List = () => {
+  const params = useParams;
+  const list = findList(params.url);
+  console.log(params);
+  console.log(list);
   return (
     <>
       <table>
-        <thead>{sampleData.sampleList.name}</thead>
+        <thead>{list.name}</thead>
         <tbody>
           <tr>
             <AddItem />
           </tr>
-          {sampleData.sampleList.items.map((item) => (
+          {list.items.map((item) => (
             <ListRow key={item} item={item} />
           ))}
         </tbody>
