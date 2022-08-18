@@ -1,9 +1,15 @@
-const sampleMyLists = {
-  lists: ["Ajv7eIl9", "Jvi53Csm", "8Fv14Kjx", "eq3cO4nC", "mN6JVDei"],
+const sampleLocalData = {
+  lists: [
+    { url: "Ajv7eIl9", name: "My list #1" },
+    { url: "Jvi53Csm", name: "Mudit's favourite albums" },
+    { url: "8Fv14Kjx", name: "Harry's music recommendations" },
+    { url: "eq3cO4nC", name: "Mudit's favourite movies" },
+    { url: "mN6JVDei", name: "Arieh's misc. recommendations" },
+  ],
 };
 
-const sampleList = {
-  id: "Ajv7eIl9",
+const sampleApiData1 = {
+  url: "Ajv7eIl9",
   name: "My list #1",
   items: [
     "Science fiction book",
@@ -18,9 +24,23 @@ const sampleList = {
   ],
 };
 
+const sampleApiData2 = {
+  url: "Jvi53Csm",
+  name: "Mudit's favourite albums",
+  items: [
+    "The Weeknd - Dawn FM",
+    "Mac Miller - Circles",
+    "Jai Paul - Bait Ones",
+    "The Weeknd - Thursday",
+    "Lorde - Melodrama",
+    "Frank Ocean - Blonde",
+  ],
+};
+
 const sampleData = {
-  sampleMyLists: sampleMyLists,
-  sampleList: sampleList,
+  sampleLocalData: sampleLocalData,
+  sampleApiData1: sampleApiData1,
+  sampleApiData2: sampleApiData2,
 };
 
 export default sampleData;
