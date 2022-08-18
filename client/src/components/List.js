@@ -3,6 +3,7 @@ import sampleData from "../mockData";
 import AddItem from "./AddItem";
 import ListRow from "./ListRow";
 import { useParams } from "react-router-dom";
+import ItemRow from "./ItemRow";
 
 const findList = (url) => {
   return sampleData.sampleApiData1.url == url
@@ -24,7 +25,7 @@ const List = () => {
             <AddItem />
           </tr>
           {list.items.map((item) => (
-            <ListRow key={item} item={item} />
+            <ItemRow key={item} item={item} />
           ))}
         </tbody>
       </table>
