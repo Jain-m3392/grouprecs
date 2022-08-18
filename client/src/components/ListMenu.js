@@ -3,6 +3,7 @@ import sampleData from "../mockData";
 import ListRow from "./ListRow";
 
 const ListMenu = () => {
+  console.log(sampleData.sampleLocalData.lists);
   return (
     <table>
       <thead>
@@ -14,8 +15,8 @@ const ListMenu = () => {
         </tr>
       </thead>
       <tbody>
-        {sampleData.sampleMyLists.lists.map((list) => (
-          <ListRow listName={list} />
+        {sampleData.sampleLocalData.lists.map((list) => (
+          <ListRow key={list.url} list={list} />
         ))}
       </tbody>
     </table>
