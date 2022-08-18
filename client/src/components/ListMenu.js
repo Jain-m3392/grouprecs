@@ -3,7 +3,6 @@ import sampleData from "../mockData";
 import ListRow from "./ListRow";
 
 const ListMenu = () => {
-  console.log(sampleData.sampleLocalData.lists);
   return (
     <table>
       <thead>

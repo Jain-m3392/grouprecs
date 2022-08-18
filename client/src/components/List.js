@@ -1,7 +1,6 @@
 import React from "react";
 import sampleData from "../mockData";
 import AddItem from "./AddItem";
-import ListRow from "./ListRow";
 import { useParams } from "react-router-dom";
 import ItemRow from "./ItemRow";
 
@@ -14,8 +13,8 @@ const findList = (url) => {
 const List = () => {
   const params = useParams;
   const list = findList(params.url);
-  console.log(params);
-  console.log(list);
+  console.log("Params are ", params);
+  console.log("List is", list);
   return (
     <>
       <table>
