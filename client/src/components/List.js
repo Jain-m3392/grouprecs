@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import ItemRow from "./ItemRow";
 
 const findList = (url) => {
-  return sampleData.sampleApiData1.url == url
+  return sampleData.sampleApiData1.url === url
     ? sampleData.sampleApiData1
     : sampleData.sampleApiData2;
 };
@@ -17,12 +17,10 @@ const List = () => {
   console.log("List is", list);
   return (
     <>
+      <h2>{list.name}</h2>
+      <AddItem />
       <table>
-        <thead>{list.name}</thead>
         <tbody>
-          <tr>
-            <AddItem />
-          </tr>
           {list.items.map((item) => (
             <ItemRow key={item} item={item} />
           ))}
