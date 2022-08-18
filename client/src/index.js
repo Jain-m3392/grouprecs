@@ -1,17 +1,21 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
+import ListMenu from "./components/ListMenu";
+import List from "./components/List";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Router>
-      <App />
+      <Routes>
+        <Route path="/" element={<ListMenu />} />
+        <Route path=":url" element={<List />} />
+      </Routes>
     </Router>
   </React.StrictMode>
 );

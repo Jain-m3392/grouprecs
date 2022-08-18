@@ -16,7 +16,7 @@ const ListMenu = () => {
       </thead>
       <tbody>
         {sampleData.sampleLocalData.lists.map((list) => (
-          <ListRow key={list.url} list={list} />
+          <ListRow key={list.url} name={list.name} url={list.url} />
         ))}
       </tbody>
     </table>
