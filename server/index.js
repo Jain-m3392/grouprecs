@@ -7,11 +7,14 @@ const app = express();
 
 //connect to mongodb
 mongoose
-  .connect(process.env.ATLAS_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(process.env.ATLAS_URI)
   .catch((error) => console.log("Connection failed", error));
+
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error: "));
+db.once("open", function () {
+  console.log("Connected successfully");
+});
 
 app.use(express.json);
 app.use(api); //routes
@@ -21,6 +24,6 @@ app.use(function (err, req, res, next) {
   res.status(422).send({ error: err.message });
 });
 
-app.listen(process.env.port || 5000, function () {
+app.listen(3000, function () {
   console.log("now listening for requests");
 });
