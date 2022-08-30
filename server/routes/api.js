@@ -12,6 +12,16 @@ app.get("/", async (req, res) => {
   }
 });
 
+//get 1 list by url
+app.get("/list/:url", async (req, res) => {
+  const list = await listModel.findOne({ url: req.params.url }).exec();
+  try {
+    res.send(list);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
 //add list
 app.post("/add_list", async (req, res) => {
   const list = new listModel(req.body);
