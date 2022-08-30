@@ -36,16 +36,19 @@ app.post("/add", async (req, res) => {
   }
 });
 
+//update 1 list
 app.patch("/update/:url", async (req, res) => {
   try {
     const list = await listModel
       .findOneAndUpdate({ url: req.params.url }, req.body)
       .exec();
     await list.save();
-    res.send();
+    res.send(list);
   } catch {
     res.status(500).send(error);
   }
 });
+
+//TODO: add delete route
 
 module.exports = app;
