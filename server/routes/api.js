@@ -25,7 +25,7 @@ app.get("/list/:url", async (req, res) => {
 });
 
 //add list
-app.post("/add_list", async (req, res) => {
+app.post("/add", async (req, res) => {
   const list = new listModel(req.body);
 
   try {
