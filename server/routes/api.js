@@ -3,6 +3,7 @@ const listModel = require("../models/list");
 const app = express();
 
 //get all lists
+/*
 app.get("/", async (req, res) => {
   const lists = await listModel.find({});
   try {
@@ -11,6 +12,7 @@ app.get("/", async (req, res) => {
     res.status(500).send(error);
   }
 });
+*/
 
 //get 1 list by url
 app.get("/list/:url", async (req, res) => {
