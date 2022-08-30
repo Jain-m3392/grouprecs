@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import sampleData from "../mockData";
 import ListRow from "./ListRow";
+import CreateList from "./CreateList";
 
 const ListMenu = () => {
   return (
@@ -9,7 +10,7 @@ const ListMenu = () => {
         <tr>
           <td>My lists</td>
           <td>
-            <button className="btn btn-outline-primary">Create List</button>
+            <CreateList />
           </td>
         </tr>
       </thead>
