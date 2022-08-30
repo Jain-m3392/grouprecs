@@ -16,7 +16,7 @@ db.once("open", function () {
   console.log("Connected successfully");
 });
 
-app.use(express.json);
+app.use(express.json());
 app.use(api); //routes
 
 //handle errors
