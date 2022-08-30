@@ -58,7 +58,17 @@ app.post("/create", async (req, res) => {
     await list.save();
     res.send(list.url);
   } catch (error) {
-    res.status(500).send(error);
+    if (error.code == 11000) {
+      list.url = generateUrl();
+      try {
+        await list.save();
+        res.send(list.url);
+      } catch (error) {
+        res.status(500).send(error);
+      }
+    } else {
+      res.status(500).send(error);
+    }
   }
 });
 
