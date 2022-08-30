@@ -36,4 +36,16 @@ app.post("/add", async (req, res) => {
   }
 });
 
+app.patch("/update/:url", async (req, res) => {
+  try {
+    const list = await listModel
+      .findOneAndUpdate({ url: req.params.url }, req.body)
+      .exec();
+    await list.save();
+    res.send();
+  } catch {
+    res.status(500).send(error);
+  }
+});
+
 module.exports = app;
