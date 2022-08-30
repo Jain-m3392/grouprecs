@@ -6,6 +6,7 @@ const ListSchema = new mongoose.Schema({
     type: String,
     required: true,
     trim: true,
+    unique: true,
   },
   name: {
     type: String,
@@ -16,4 +17,4 @@ const ListSchema = new mongoose.Schema({
 
 const List = mongoose.model("List", ListSchema);
 
-modules.export = List;
+module.exports = List;
