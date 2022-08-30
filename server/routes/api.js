@@ -1,0 +1,27 @@
+const express = require("express");
+const listModel = require("../models/list");
+const app = express();
+
+//get all lists
+app.get("/", async (req, res) => {
+  const lists = await listModel.find({});
+  try {
+    res.send(lists);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+//add list
+app.post("/add_list", async (req, res) => {
+  const list = new listModel(req.body);
+
+  try {
+    await list.save();
+    res.send(user);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+module.exports = app;
