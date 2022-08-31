@@ -57,6 +57,7 @@ app.get("/list/:url", async (req, res) => {
 app.post("/create", async (req, res) => {
   const list = new listModel(req.body);
   list.url = generateUrl();
+
   try {
     await list.save();
     res.send(list);
