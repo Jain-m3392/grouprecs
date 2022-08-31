@@ -1,9 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import sampleData from "../mockData";
 import ListRow from "./ListRow";
 import CreateList from "./CreateList";
 
 const ListMenu = () => {
+  const [storedLists, setStoredLists] = useState([]);
+
+  useEffect(() => {
+    setStoredLists(JSON.parse(localStorage.getItem("lists")));
+  });
+
   return (
     <table>
       <thead>
@@ -15,9 +21,13 @@ const ListMenu = () => {
         </tr>
       </thead>
       <tbody>
-        {sampleData.sampleLocalData.lists.map((list) => (
-          <ListRow key={list.url} name={list.name} url={list.url} />
-        ))}
+        {!storedLists ? (
+          <tr>You have no lists. Create one!</tr>
+        ) : (
+          storedLists.map((list) => (
+            <ListRow key={list.url} name={list.name} url={list.url} />
+          ))
+        )}
       </tbody>
     </table>
   );
