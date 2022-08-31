@@ -4,11 +4,11 @@ import ListRow from "./ListRow";
 import CreateList from "./CreateList";
 
 const ListMenu = () => {
-  const [storedLists, setStoredLists] = useState([]);
+  const [storedLists, setStoredLists] = useState(
+    setStoredLists(JSON.parse(localStorage.getItem("lists")))
+  );
 
-  useEffect(() => {
-    setStoredLists(JSON.parse(localStorage.getItem("lists")));
-  });
+  useEffect(() => {});
 
   return (
     <table>
@@ -16,7 +16,10 @@ const ListMenu = () => {
         <tr>
           <td>My lists</td>
           <td>
-            <CreateList />
+            <CreateList
+              storedLists={storedLists}
+              setStoredLists={setStoredLists}
+            />
           </td>
         </tr>
       </thead>
