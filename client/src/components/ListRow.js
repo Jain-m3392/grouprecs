@@ -10,6 +10,9 @@ const ListRow = (props) => {
       <td>
         <button className="btn btn-outline-danger">Delete</button>
       </td>
+      <td>
+        <button className="btn btn-outline-primary">Copy URL</button>
+      </td>
     </tr>
   );
 };
