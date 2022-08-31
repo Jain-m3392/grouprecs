@@ -59,7 +59,7 @@ app.post("/create", async (req, res) => {
   list.url = generateUrl();
   try {
     await list.save();
-    res.send(list.url);
+    res.send(list);
   } catch (error) {
     if (error.code == 11000) {
       list.url = generateUrl();
