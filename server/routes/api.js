@@ -1,6 +1,9 @@
 const express = require("express");
+const cors = require("cors");
 const listModel = require("../models/list");
 const app = express();
+
+app.use(cors());
 
 //business logic for generating urls
 function generateUrl() {
