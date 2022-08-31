@@ -20,31 +20,41 @@ const CreateList = (props) => {
       headers: {
         "Content-type": "application/json; charset=UTF-8",
       },
-    }).then(
-      (
-        res //now we set the local list's url & stash it locally to display in listMenu
-      ) =>
-        res
-          .json()
-          .then((data) => {
-            newListLocal.url = data.url;
+    })
+      .then(
+        (
+          res //now we set the local list's url & stash it locally to display in listMenu
+        ) =>
+          res
+            .json()
+            .then((data) => {
+              newListLocal.url = data.url;
 
-            //store object locally
-            props.setStoredLists(
-              props.storedLists.map(...props.storedList, newListLocal)
-            );
+              //store object locally
+              if (!props.storedLists) {
+                props.setStoredLists([newListLocal]);
+                localStorage.setItem("lists", props.storedLists);
+              } else {
+                localStorage.setItem("lists", props.storedLists);
+              }
 
-            //opening a new tab
-            window.open(
-              `http://localhost:3000/${data.url}`,
-              "_blank",
-              "noopener,noreferrer"
-            );
-          })
-          .catch((error) => {
-            console.log(error);
-          })
-    );
+              //close modal
+              setShowCreateModal(false);
+
+              //opening a new tab
+              window.open(
+                `http://localhost:3000/${data.url}`,
+                "_blank",
+                "noopener,noreferrer"
+              );
+            })
+            .catch((error) => {
+              console.log(error);
+            })
+      )
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const handleNameChange = (event) => {
