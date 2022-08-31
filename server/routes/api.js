@@ -8,26 +8,25 @@ app.use(cors());
 //business logic for generating urls
 function generateUrl() {
   //initialize values
-  let charSet =
-    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  let charSet = "abcdefghijklmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ0123456789";
   let url = "";
   const createdTime = String(Date.now());
 
   //generate 1st 3 random characters
   for (i = 0; i < 3; i++) {
-    url = url.concat(charSet[Math.floor(Math.random() * 61)]);
+    url = url.concat(charSet[Math.floor(Math.random() * 60)]);
   }
 
   //get next 4 characters based on following double digit numbers in createdTime
   for (i = 0; i < 4; i++) {
     let source = createdTime.slice(i * 2 + 1, i * 2 + 3);
     source = source * Math.floor(Math.random() * 9);
-    url = url.concat(charSet[source % 61]);
+    url = url.concat(charSet[source % 60]);
   }
 
   //get last character based on last digits in createdTime
   let lastSource = createdTime.slice(11);
-  url = url.concat(charSet[lastSource % 61]);
+  url = url.concat(charSet[lastSource % 60]);
   return url;
 }
 
@@ -56,6 +55,7 @@ app.get("/list/:url", async (req, res) => {
 //create list
 app.post("/create", async (req, res) => {
   const list = new listModel(req.body);
+  console.log(req.body);
   list.url = generateUrl();
 
   try {
