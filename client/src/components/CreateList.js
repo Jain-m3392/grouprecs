@@ -33,15 +33,22 @@ const CreateList = (props) => {
               //store object locally
               if (!props.storedLists) {
                 console.log("No lists.");
-                localStorage.setItem("lists", JSON.stringify([newListLocal]));
-                props.setStoredLists(JSON.parse(localStorage.getItem("lists")));
+                localStorage.setItem(
+                  "grouprecs_lists",
+                  JSON.stringify([newListLocal])
+                );
+                props.setStoredLists(
+                  JSON.parse(localStorage.getItem("grouprecs_lists"))
+                );
               } else {
                 console.log("There are some lists");
                 localStorage.setItem(
-                  "lists",
+                  "grouprecs_lists",
                   JSON.stringify([...props.storedLists, newListLocal])
                 );
-                props.setStoredLists(JSON.parse(localStorage.getItem("lists")));
+                props.setStoredLists(
+                  JSON.parse(localStorage.getItem("grouprecs_lists"))
+                );
               }
 
               //close modal

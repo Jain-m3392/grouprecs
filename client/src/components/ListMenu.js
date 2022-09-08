@@ -4,7 +4,7 @@ import CreateList from "./CreateList";
 
 const ListMenu = () => {
   const [storedLists, setStoredLists] = useState(
-    JSON.parse(localStorage.getItem("lists"))
+    JSON.parse(localStorage.getItem("grouprecs_lists"))
   );
 
   return (
