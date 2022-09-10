@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import ListRow from "./ListRow";
 import CreateList from "./CreateList";
 
+//TODO: Differentiate lists you've created vs lists you've saved
+//TODO: Add ability to delete lists if you've created them and remove from library if you've saved them
+
 const ListMenu = () => {
   const [storedLists, setStoredLists] = useState(
     JSON.parse(localStorage.getItem("grouprecs_lists"))
