@@ -30,7 +30,13 @@ const List = () => {
       <table>
         <tbody>
           {list.items.map((item, index) => (
-            <ItemRow key={index} item={item} list={list} setList={setList} />
+            <ItemRow
+              key={index}
+              item={item}
+              list={list}
+              setList={setList}
+              index={index}
+            />
           ))}
         </tbody>
       </table>

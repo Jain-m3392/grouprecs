@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 
-//TODO: Change remove logic so that it doesn't remove items with the same name, only that specific item
-
 const ItemRow = (props) => {
   const handleDelete = () => {
+    console.log(props.index);
+
     //remove item from listItems
-    let newItems = props.list.items.filter((item) => item !== props.item);
+    const newItemsStart = props.list.items.slice(0, props.index);
+    const newItemsEnd = props.list.items.slice(props.index + 1);
+    const newItems = newItemsStart.concat(newItemsEnd);
 
     //new object to be used on our API
     let newList = {
