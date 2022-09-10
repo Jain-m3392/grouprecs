@@ -31,15 +31,23 @@ const List = () => {
       <AddItem list={list} setList={setList} />
       <table>
         <tbody>
-          {list.items.map((item, index) => (
-            <ItemRow
-              key={index}
-              item={item}
-              list={list}
-              setList={setList}
-              index={index}
-            />
-          ))}
+          {list.items.length === 0 ? (
+            <tr>
+              <td>
+                <p>Your list is empty. Add an item!</p>
+              </td>
+            </tr>
+          ) : (
+            list.items.map((item, index) => (
+              <ItemRow
+                key={index}
+                item={item}
+                list={list}
+                setList={setList}
+                index={index}
+              />
+            ))
+          )}
         </tbody>
       </table>
     </>
