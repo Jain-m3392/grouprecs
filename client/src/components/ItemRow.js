@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+//TODO: Change remove logic so that it doesn't remove items with the same name, only that specific item
+
 const ItemRow = (props) => {
   const handleDelete = () => {
     //remove item from listItems
