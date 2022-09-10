@@ -1,7 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 
 const AddItem = (props) => {
-  const handleAdd = () => {};
+  const [itemName, setItemName] = useState("");
+
+  const handleAdd = () => {
+    let newList = {
+      url: props.list.url,
+      name: props.list.name,
+      items: [...props.list.items, itemName],
+    };
+    //update server
+    fetch(`http://localhost:5000/update/${props.list.url}`, {
+      method: "PATCH",
+      body: JSON.stringify(newList),
+      headers: { "Content-type": "application/json; charset=UTF-8" },
+    })
+      .then((res) =>
+        res.json().then(() => {
+          //update react page
+          props.setList(newList);
+          setItemName("");
+        })
+      )
+      .then((json) => console.log(json));
+  };
 
   return (
     <div className="input-group">
@@ -10,7 +32,15 @@ const AddItem = (props) => {
           Add
         </button>
       </div>
-      <input type="text" className="form-control" placeholder="Add an item" />
+      <input
+        type="text"
+        className="form-control"
+        placeholder="Add an item"
+        value={itemName}
+        onChange={(e) => {
+          setItemName(e.target.value);
+        }}
+      />
     </div>
   );
 };
