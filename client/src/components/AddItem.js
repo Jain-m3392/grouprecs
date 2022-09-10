@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+//TODO: change CSS if invalid input
+
 const AddItem = (props) => {
   const [itemName, setItemName] = useState("");
 
