@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+//TODO: write handleDelete function
+
 const ListRow = (props) => {
+  const handleDelete = () => {};
+
   return (
     <tr>
       <td>
@@ -10,7 +14,9 @@ const ListRow = (props) => {
         </Link>
       </td>
       <td>
-        <button className="btn btn-outline-danger">Delete</button>
+        <button className="btn btn-outline-danger" onClick={handleDelete}>
+          Delete
+        </button>
       </td>
       <td>
         <button className="btn btn-outline-primary">Copy URL</button>
