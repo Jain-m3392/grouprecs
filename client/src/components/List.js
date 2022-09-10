@@ -3,6 +3,8 @@ import AddItem from "./AddItem";
 import { useParams } from "react-router-dom";
 import ItemRow from "./ItemRow";
 
+//TODO: Add ability to share list & copy its url
+
 const List = () => {
   const params = useParams();
   const [list, setList] = useState(null);
