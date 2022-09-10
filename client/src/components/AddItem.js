@@ -1,28 +1,32 @@
 import React, { useState } from "react";
 
+//TODO: Do not add item if input is empty or whitespace
+
 const AddItem = (props) => {
   const [itemName, setItemName] = useState("");
 
   const handleAdd = () => {
-    let newList = {
-      url: props.list.url,
-      name: props.list.name,
-      items: [...props.list.items, itemName],
-    };
-    //update server
-    fetch(`http://localhost:5000/update/${props.list.url}`, {
-      method: "PATCH",
-      body: JSON.stringify(newList),
-      headers: { "Content-type": "application/json; charset=UTF-8" },
-    })
-      .then((res) =>
-        res.json().then(() => {
-          //update react page
-          props.setList(newList);
-          setItemName("");
-        })
-      )
-      .then((json) => console.log(json));
+    if (itemName !== "") {
+      let newList = {
+        url: props.list.url,
+        name: props.list.name,
+        items: [...props.list.items, itemName],
+      };
+      //update server
+      fetch(`http://localhost:5000/update/${props.list.url}`, {
+        method: "PATCH",
+        body: JSON.stringify(newList),
+        headers: { "Content-type": "application/json; charset=UTF-8" },
+      })
+        .then((res) =>
+          res.json().then(() => {
+            //update react page
+            props.setList(newList);
+            setItemName("");
+          })
+        )
+        .then((json) => console.log(json));
+    }
   };
 
   return (
