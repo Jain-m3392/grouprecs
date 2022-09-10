@@ -26,7 +26,7 @@ const List = () => {
   return (
     <>
       <h2>{list.name}</h2>
-      <AddItem />
+      <AddItem list={list} setList={setList} />
       <table>
         <tbody>
           {list.items.map((item) => (
