@@ -13,6 +13,7 @@ const ListRow = (props) => {
           {props.name}
         </Link>
       </td>
+      {/*
       <td>
         <button className="btn btn-outline-danger" onClick={handleDelete}>
           Delete
@@ -21,6 +22,7 @@ const ListRow = (props) => {
       <td>
         <button className="btn btn-outline-primary">Copy URL</button>
       </td>
+  */}
     </tr>
   );
 };
