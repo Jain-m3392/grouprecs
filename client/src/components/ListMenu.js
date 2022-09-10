@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import ListRow from "./ListRow";
 import CreateList from "./CreateList";
 
@@ -29,7 +29,13 @@ const ListMenu = () => {
           </tr>
         ) : (
           storedLists.map((list) => (
-            <ListRow key={list.url} name={list.name} url={list.url} />
+            <ListRow
+              key={list.url}
+              name={list.name}
+              url={list.url}
+              storedLists={storedLists}
+              setStoredLists={setStoredLists}
+            />
           ))
         )}
       </tbody>
