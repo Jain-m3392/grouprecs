@@ -3,8 +3,6 @@ import AddItem from "./AddItem";
 import { useParams } from "react-router-dom";
 import ItemRow from "./ItemRow";
 
-//TODO: Give item row unique integer key
-
 const List = () => {
   const params = useParams();
   const [list, setList] = useState(null);
@@ -31,8 +29,8 @@ const List = () => {
       <AddItem list={list} setList={setList} />
       <table>
         <tbody>
-          {list.items.map((item) => (
-            <ItemRow key={item} item={item} list={list} setList={setList} />
+          {list.items.map((item, index) => (
+            <ItemRow key={index} item={item} list={list} setList={setList} />
           ))}
         </tbody>
       </table>
