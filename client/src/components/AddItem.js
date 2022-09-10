@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 
-//TODO: Do not add item if input is empty or whitespace
-
 const AddItem = (props) => {
   const [itemName, setItemName] = useState("");
 
   const handleAdd = () => {
-    if (itemName !== "") {
+    if (itemName.trim().length !== 0) {
       let newList = {
         url: props.list.url,
         name: props.list.name,
@@ -26,6 +24,8 @@ const AddItem = (props) => {
           })
         )
         .then((json) => console.log(json));
+    } else {
+      setItemName("");
     }
   };
 
