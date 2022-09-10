@@ -8,66 +8,70 @@ const CreateList = (props) => {
   const handleClose = () => setShowCreateModal(false);
   const handleShow = () => setShowCreateModal(true);
 
-  //TODO: Add name validation to prevent empty names
+  //TODO: change CSS if invalid input
   const handleCreate = () => {
-    let newListLocal = { url: "", name: listName };
-    let newList = { url: "", name: listName, items: [] };
-    console.log(newList);
+    if (listName.trim().length !== 0) {
+      let newListLocal = { url: "", name: listName };
+      let newList = { url: "", name: listName, items: [] };
+      console.log(newList);
 
-    fetch("http://localhost:5000/create", {
-      method: "POST",
-      body: JSON.stringify(newList),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    })
-      .then(
-        (
-          res //now we set the local list's url & stash it locally to display in listMenu
-        ) =>
-          res
-            .json()
-            .then((data) => {
-              newListLocal.url = data.url;
+      fetch("http://localhost:5000/create", {
+        method: "POST",
+        body: JSON.stringify(newList),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
+        .then(
+          (
+            res //now we set the local list's url & stash it locally to display in listMenu
+          ) =>
+            res
+              .json()
+              .then((data) => {
+                newListLocal.url = data.url;
 
-              //store object locally
-              if (!props.storedLists) {
-                console.log("No lists.");
-                localStorage.setItem(
-                  "grouprecs_lists",
-                  JSON.stringify([newListLocal])
-                );
-                props.setStoredLists(
-                  JSON.parse(localStorage.getItem("grouprecs_lists"))
-                );
-              } else {
-                console.log("There are some lists");
-                localStorage.setItem(
-                  "grouprecs_lists",
-                  JSON.stringify([...props.storedLists, newListLocal])
-                );
-                props.setStoredLists(
-                  JSON.parse(localStorage.getItem("grouprecs_lists"))
-                );
-              }
+                //store object locally
+                if (!props.storedLists) {
+                  console.log("No lists.");
+                  localStorage.setItem(
+                    "grouprecs_lists",
+                    JSON.stringify([newListLocal])
+                  );
+                  props.setStoredLists(
+                    JSON.parse(localStorage.getItem("grouprecs_lists"))
+                  );
+                } else {
+                  console.log("There are some lists");
+                  localStorage.setItem(
+                    "grouprecs_lists",
+                    JSON.stringify([...props.storedLists, newListLocal])
+                  );
+                  props.setStoredLists(
+                    JSON.parse(localStorage.getItem("grouprecs_lists"))
+                  );
+                }
 
-              //close modal
-              setShowCreateModal(false);
+                //close modal
+                setShowCreateModal(false);
 
-              //opening a new tab
-              window.open(
-                `http://localhost:3000/${data.url}`,
-                "_blank",
-                "noopener,noreferrer"
-              );
-            })
-            .catch((error) => {
-              console.log(error);
-            })
-      )
-      .catch((error) => {
-        console.log(error);
-      });
+                //opening a new tab
+                window.open(
+                  `http://localhost:3000/${data.url}`,
+                  "_blank",
+                  "noopener,noreferrer"
+                );
+              })
+              .catch((error) => {
+                console.log(error);
+              })
+        )
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      setListName("");
+    }
   };
 
   const handleNameChange = (event) => {
@@ -93,6 +97,7 @@ const CreateList = (props) => {
             className="form-control"
             placeholder="Name your list"
             onChange={handleNameChange}
+            value={listName}
           />
         </Modal.Body>
         <Modal.Footer>
