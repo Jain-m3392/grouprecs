@@ -3,6 +3,7 @@ import AddItem from "./AddItem";
 import { useParams } from "react-router-dom";
 import ItemRow from "./ItemRow";
 
+//TODO: Add ability to edit list name
 //TODO: Add ability to share list & copy its url
 //TODO: Differentiate list based on whether you created it vs whether you've saved it
 //TODO: Add ability to save list to library
