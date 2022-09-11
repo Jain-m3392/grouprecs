@@ -3,7 +3,7 @@ import { Modal } from "react-bootstrap";
 
 const CreateList = (props) => {
   const [showCreateModal, setShowCreateModal] = useState(false);
-  const [listName, setListName] = useState(" ");
+  const [listName, setListName] = useState("");
 
   const handleClose = () => setShowCreateModal(false);
   const handleShow = () => setShowCreateModal(true);
