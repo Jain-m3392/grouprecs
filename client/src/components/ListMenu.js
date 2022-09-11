@@ -14,7 +14,9 @@ const ListMenu = () => {
     <table>
       <thead>
         <tr>
-          <td>My lists</td>
+          <td>
+            <h2>My lists</h2>
+          </td>
           <td>
             <CreateList
               storedLists={storedLists}
